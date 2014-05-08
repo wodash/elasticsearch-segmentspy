@@ -24,6 +24,7 @@ $(document).ready(function () {
 		global.previousSegments = {};
 		global.loaded = false;
 		global.refreshInterval = 500;
+		global.sortIndices = false;
 
 
 		var app = Sammy("body", function() {
@@ -186,14 +187,15 @@ $(document).ready(function () {
 
 							if (segments !== {}) {
 								$.each(segments, function (divId, segmentList) {
-									segmentList = segmentList.sort(function(a,b) {
-										//we can do this because only one of these values will be >0 due to
-										//the quirky need to abuse Google Charts for multicolor
-										var docsA = a[1] + a[2] + a[3];
-										var docsB = b[1] + b[2] + b[3];
-										return parseInt(docsB) - parseInt(docsA);
-									});
-
+									if (global.sortIndices){
+										segmentList = segmentList.sort(function(a, b) {
+											//we can do this because only one of these values will be >0 due to
+											//the quirky need to abuse Google Charts for multicolor
+											var docsA = a[1] + a[2] + a[3];
+											var docsB = b[1] + b[2] + b[3];
+											return parseInt(docsB) - parseInt(docsA);
+										});
+									}
 									global.graphs[divId].setData(segmentList);
 									global.graphs[divId].drawChart();
 
