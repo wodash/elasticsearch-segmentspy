@@ -196,6 +196,11 @@ $(document).ready(function () {
 											return parseInt(docsB) - parseInt(docsA);
 										});
 									}
+									var len = segmentList.length;
+                                    					var j;
+                                    					for (j = 50; j < len; j += 25);
+                                    					for (var i = len; i < j; i++)
+                                        					segments[divId].push(['_0', 0, 0, 0, 0]);
 									global.graphs[divId].setData(segmentList);
 									global.graphs[divId].drawChart();
 
