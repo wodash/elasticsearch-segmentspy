@@ -14,7 +14,7 @@ function getGrapher() {
 			vAxes: {0: {logScale: true},
 					1: {logScale: true, maxValue:1000000}},
 			series:[{color: '#0008FF'}, {color: '#0099FF'},{color: 'orange'}, {color: 'red'}],
-			bar: {groupWidth: "90%"},
+			bar: {groupWidth: "10"},
 			chartArea: {left:100,top:10,width:"800px"},
 			
 		},
