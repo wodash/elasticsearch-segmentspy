@@ -248,11 +248,20 @@ $(document).ready(function () {
 									context.nodes[pr.node] = new Array();
 								}
 
+								var Pri='';
+								var St='';
+								if (pr.primary)
+									Pri = 'Primary ';
+								if (pr.state === 'UNASSIGNED')
+									St = 'Unassigned ';
 								//css ids can't start with numbers, prepend with "node"
 								context.nodes[pr.node].push( {id: "node_" + pr.node + "_" + shardId,
+															tag: shardId,
 															node: pr.node,
 															index: pr.index,
-															primary: pr.primary} );
+															//primary: pr.primary} 
+															primary: Pri,
+															state: St);
 
 							});
 
