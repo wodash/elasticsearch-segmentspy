@@ -261,7 +261,7 @@ $(document).ready(function () {
 															index: pr.index,
 															//primary: pr.primary} 
 															primary: Pri,
-															state: St);
+															state: St});
 
 							});
 
