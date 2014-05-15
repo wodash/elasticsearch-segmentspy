@@ -53,6 +53,8 @@
 		{{#eachProperty this.nodes}}
 			<h2>Node: {{property}}</h2>
 			{{#each value}}
+				<h4 style="display: inline-block;">Shard: {{this.tag}} &nbsp </h4>
+				<span style="color: grey; font-size: 12px;"><i>{{this.primary}} {{this.state}}</i></span>
 				<div id="{{this.id}}" style="width:1000px; height:300px;"></div>
 			{{/each}}
 		{{/eachProperty}}
