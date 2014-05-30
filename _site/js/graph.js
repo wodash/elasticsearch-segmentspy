@@ -11,7 +11,7 @@ function getGrapher() {
 			hAxis: {title: 'Segments', titleTextStyle: {color: 'red'}},
 			
 			isStacked: true,
-			vAxes: {0: {logScale: true},
+			vAxes: {0: {title: 'Segments', logScale: true},
 					1: {logScale: true, maxValue:1000000}},
 			series:[{color: '#0008FF'}, {color: '#0099FF'},{color: 'orange'}, {color: 'red'}],
 			bar: {groupWidth: "50%"},

@@ -52,8 +52,8 @@ $(document).ready(function () {
 						context.loadIndices();
 						context.jq_pauseButton();
 						context.jq_refreshInterval();
-            					context.jq_changeHostButton();
-            					$("#host").val(global.host);
+            			context.jq_changeHostButton();
+            			$("#host").val(global.host);
 						global.loaded = true;
 					}
 				},
@@ -242,10 +242,15 @@ $(document).ready(function () {
 						context.master_node = state.master_node;
 
 						context.nodes = {};
+
+						try{
 						$.each(state.routing_table.indices[targetIndex].shards, function (shardId, shard) {
 							$.each(shard, function(prId, pr) {
-								if (typeof context.nodes[pr.node] === 'undefined') {
-									context.nodes[pr.node] = new Array();
+								if (pr.node !== null)
+									var nodeName = state.nodes[pr.node].name;
+								if (typeof context.nodes[nodeName] === 'undefined') {
+
+									context.nodes[nodeName] = new Array();
 								}
 
 								var Pri='';
@@ -255,7 +260,8 @@ $(document).ready(function () {
 								if (pr.state === 'UNASSIGNED')
 									St = 'Unassigned ';
 								//css ids can't start with numbers, prepend with "node"
-								context.nodes[pr.node].push( {id: "node_" + pr.node + "_" + shardId,
+								context.nodes[nodeName].push({
+									id : "node_" + pr.node + "_" + shardId,
 															tag: shardId,
 															node: pr.node,
 															index: pr.index,
@@ -269,6 +275,11 @@ $(document).ready(function () {
 
 
 						});
+						}
+						catch(err)
+						{
+							alert("The Host '"+global.host+"' might not have the Index '"+targetIndex+"' ...please verify!");
+						}
 
 
 						return context;
